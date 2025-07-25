@@ -1,0 +1,67 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api
+  labels:
+    deployment: api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api
+  template:
+    metadata:
+      labels:
+        app: api
+    spec:
+      containers:
+        - name: api
+          image: registry.digitalocean.com/example-registry/api:latest
+          env:
+            - name: NODE_ENV
+              value: 'production'
+            - name: APPLICATION_SECRET
+              value: application_secret_example
+            - name: API_PORT
+              value: '3000'
+            - name: DELETE_ACCOUNT_URL
+              value: 'delete-account.example.com '
+            - name: DATABASE_TYPE
+              value: 'postgres'
+            - name: DATABASE_SYNCHRONIZE
+              value: 'false'
+            - name: DATABASE_LOGGING
+              value: 'true'
+            - name: DATABASE_HOST
+              value: database_host_ip_address
+            - name: DATABASE_PORT
+              value: '5432'
+            - name: DATABASE_NAME
+              value: database_name
+            - name: DATABASE_SCHEMA
+              value: database_schema
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+      imagePullSecrets:
+        - name: periodtracker-core-registry
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: api
+spec:
+  type: ClusterIP
+  selector:
+    app: api
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000

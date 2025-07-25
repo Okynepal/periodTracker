@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cms
+  labels:
+    deployment: cms
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cms
+  template:
+    metadata:
+      labels:
+        app: cms
+    spec:
+      containers:
+        - name: cms
+          image: registry.digitalocean.com/example-registry/cms:latest
+          volumeMounts:
+            - name: config-volume
+              mountPath: /periodtracker/config
+          env:
+            - name: NODE_ENV
+              value: 'production'
+            - name: DATABASE_TYPE
+              value: 'postgres'
+            - name: DATABASE_SYNCHRONIZE
+              value: 'false'
+            - name: DATABASE_LOGGING
+              value: 'false'
+            - name: DATABASE_HOST
+              value: database_host_ip_address
+            - name: DATABASE_PORT
+              value: '5432'
+            - name: DATABASE_NAME
+              value: database_schema
+            - name: DATABASE_SCHEMA
+              value: database_schema
+            - name: DATABASE_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: user
+            - name: DATABASE_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-credentials
+                  key: password
+            - name: PASSPORT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: passport
+                  key: secret
+            - name: GOOGLE_APPLICATION_CREDENTIALS
+              value: '/periodtracker/config/firebase-config.json'
+      volumes:
+        - name: config-volume
+          configMap:
+            name: firebase-config
+            items:
+              - key: firebase.conf
+                path: 'firebase-config.json'
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: cms
+spec:
+  type: ClusterIP
+  selector:
+    app: cms
+  ports:
+    - protocol: TCP
+      port: 5000
+      targetPort: 5000

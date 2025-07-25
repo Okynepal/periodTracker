@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adminer
+  labels:
+    app: adminer
+spec:
+  selector:
+    matchLabels:
+      app: adminer
+  template:
+    metadata:
+      labels:
+        app: adminer
+    spec:
+      containers:
+        - name: adminer
+          image: adminer:4.6.3
+          ports:
+            - containerPort: 8080
+          env:
+            - name: ADMINER_DESIGN
+              value: 'pappu687'
+            - name: ADMINER_DEFAULT_SERVER
+              value: postgres
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: adminer
+spec:
+  type: ClusterIP
+  selector:
+    app: adminer
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
