@@ -4,9 +4,9 @@
     "slug": "periodtracker",
     "version": "1.0.0",
     "orientation": "default",
-    "icon": "./src/resources/assets/app/icon.jpg",
+    "icon": "./src/resources/assets/app/icon.png",
     "splash": {
-      "image": "./src/resources/assets/app/splash.jpg",
+      "image": "./src/resources/assets/app/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
