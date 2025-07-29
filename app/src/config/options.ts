@@ -5,6 +5,13 @@ export const locations = [
   { value: 'Rural', label: 'Rural', iconName: 'leaf' },
 ]
 
+// Add the missing genders export
+export const genders = [
+  { value: 'Male', label: 'Male', iconName: 'male' },
+  { value: 'Female', label: 'Female', iconName: 'female' },
+  { value: 'Other', label: 'Other', iconName: 'genderless' },
+]
+
 const now = new Date()
 const currentYear = now.getFullYear()
 const years = generateRange(currentYear - 7, currentYear - 100).map((item) => item.toString())

@@ -1,5 +1,5 @@
 import { ImageSourcePropType } from 'react-native'
-import { assets } from '../resources/assets'
+import { assets } from '../resources/assets/index' // Add /index to the path
 
 /**
  * Get an asset by path
