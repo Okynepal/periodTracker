@@ -17,7 +17,7 @@ $('#articleModal').on('show.bs.modal', (event) => {
     $('#ageRestrictionLevelForm').val('0')
     $('#col4TableModal').prop('checked', false)
     $('#itemID').text(0)
-    $('#countdown2').text(70 + ' characters remaining.')
+    $('#countdown2').text(140 + ' characters remaining.')
     $('#col1TableModal').attr('disabled', true)
     return
   }
@@ -35,7 +35,7 @@ $('#articleModal').on('show.bs.modal', (event) => {
   $('#ageRestrictionLevelForm').val(articleInfo.ageRestrictionLevel)
   $('#col4TableModal').prop('checked', articleInfo.live)
   $('#itemID').text(articleId)
-  $('#countdown2').text(70 - articleInfo.article_heading.length + ' characters remaining.')
+  $('#countdown2').text(140 - articleInfo.article_heading.length + ' characters remaining.')
   handleSubCategorySelect(articleInfo.category_id)
 })
 
@@ -104,7 +104,7 @@ $('#btnArticleEditConfirm').on('click', () => {
     data.category === '' ||
     data.subcategory === '' ||
     data.article_heading === '' ||
-    data.article_heading.length > 70 ||
+    data.article_heading.length > 140 ||
     data.article_text === ''
   ) {
     $('#error1').show()
@@ -364,7 +364,7 @@ function makeUpdateCountdown({ countdownElement, tableElement, maxLength }) {
 makeUpdateCountdown({
   countdownElement: $('#countdown2'),
   tableElement: $('#col2TableModal'),
-  maxLength: 70,
+  maxLength: 140,
 })
 //control subcategory select
 $('#col0TableModal').change((event) => {

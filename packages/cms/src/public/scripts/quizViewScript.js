@@ -60,20 +60,20 @@ $('#btnEditConfirm').on('click', () => {
     live: $('#col9TableModal').prop('checked'),
   }
   if (
-    data.topic === '' ||
-    data.question === '' ||
-    data.question.length > 65 ||
-    data.option1 === '' ||
-    data.option1.length > 20 ||
-    data.option2 === '' ||
-    data.option2.length > 20 ||
-    data.option3 === '' ||
-    data.option3.length > 20 ||
-    data.right_answer === '' ||
-    data.wrong_answer_response === '' ||
-    data.wrong_answer_response.length > 160 ||
-    data.right_answer_response === '' ||
-    data.right_answer_response.length > 160
+    data.topic.trim() === '' ||
+    data.question.trim() === '' ||
+    data.question.length > 200 ||
+    data.option1.trim() === '' ||
+    data.option1.length > 80 ||
+    data.option2.trim() === '' ||
+    data.option2.length > 80 ||
+    data.option3.trim() === '' ||
+    data.option3.length > 80 ||
+    data.right_answer.trim() === '' ||
+    data.wrong_answer_response.trim() === '' ||
+    data.wrong_answer_response.length > 300 ||
+    data.right_answer_response.trim() === '' ||
+    data.right_answer_response.length > 300
   ) {
     $('#error1').show()
     $('#error2').show()
@@ -481,34 +481,49 @@ function makeUpdateCountdown({ countdownElement, tableElement, maxLength }) {
   })
 }
 
+// Add this new countdown for the Topic field (col0TableModal)
+makeUpdateCountdown({
+  countdownElement: $('#countdown0'),
+  tableElement: $('#col0TableModal'),
+  maxLength: 100, // Set appropriate max length for topic
+})
+
 makeUpdateCountdown({
   countdownElement: $('#countdown1'),
   tableElement: $('#col1TableModal'),
-  maxLength: 65,
+  maxLength: 200,
 })
 
 makeUpdateCountdown({
   countdownElement: $('#countdown2'),
   tableElement: $('#col2TableModal'),
-  maxLength: 20,
+  maxLength: 80,
 })
 makeUpdateCountdown({
   countdownElement: $('#countdown3'),
   tableElement: $('#col3TableModal'),
-  maxLength: 20,
+  maxLength: 80,
 })
 makeUpdateCountdown({
   countdownElement: $('#countdown4'),
   tableElement: $('#col4TableModal'),
-  maxLength: 20,
+  maxLength: 80,
 })
 makeUpdateCountdown({
   countdownElement: $('#countdown5'),
   tableElement: $('#col6TableModal'),
-  maxLength: 160,
+  maxLength: 300,
 })
 makeUpdateCountdown({
   countdownElement: $('#countdown6'),
   tableElement: $('#col7TableModal'),
-  maxLength: 160,
+  maxLength: 300,
 })
+
+// Add paste event handler for Topic field
+$('#col0TableModal').on('paste input', function() {
+  // Small delay to ensure pasted content is processed
+  setTimeout(function() {
+    $('#error1').hide(); // Hide the error when content is detected
+  }, 10);
+});

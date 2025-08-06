@@ -28,6 +28,10 @@ export const cmsLanguages = [
     name: 'Español',
     locale: 'es',
   },
+  {
+    name: 'नेपाली', // Nepali in Devanagari script
+    locale: 'ne',
+  },
 ]
 
 export const cmsLocales = cmsLanguages.map((lang) => lang.locale)

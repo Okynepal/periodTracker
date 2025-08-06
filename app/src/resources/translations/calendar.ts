@@ -1,5 +1,10 @@
 import { Locale } from '.'
-import { CalendarTranslations } from '../../types/translations/calendar'
+interface CalendarTranslations {
+  monthNames: string[]
+  monthNamesShort: string[]
+  dayNames: string[]
+  dayNamesShort: string[]
+}
 
 export const calendarTranslations: Record<Locale, CalendarTranslations> = {
   en: {
@@ -42,6 +47,20 @@ export const calendarTranslations: Record<Locale, CalendarTranslations> = {
     ],
     dayNamesShort: ['Sun', 'Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat'],
   },
+  ne: {
+    monthNames: [
+      'जनवरी', 'फेब्रुअरी', 'मार्च', 'अप्रिल', 'मे', 'जुन',
+      'जुलाई', 'अगस्त', 'सेप्टेम्बर', 'अक्टोबर', 'नोभेम्बर', 'डिसेम्बर'
+    ],
+    monthNamesShort: [
+      'जन', 'फेब', 'मार्च', 'अप्र', 'मे', 'जुन',
+      'जुल', 'अग', 'सेप', 'अक्ट', 'नोभ', 'डिस'
+    ],
+    dayNames: [
+      'आइतबार', 'सोमबार', 'मङ्गलबार', 'बुधबार', 'बिहिबार', 'शुक्रबार', 'शनिबार'
+    ],
+    dayNamesShort: ['आइत', 'सोम', 'मङ्गल', 'बुध', 'बिहि', 'शुक्र', 'शनि']
+  }
 }
 
 export const availableCalendarLocales = Object.keys(calendarTranslations)
