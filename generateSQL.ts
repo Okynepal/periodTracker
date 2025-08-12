@@ -22,8 +22,9 @@ const columnNames = {
     'lang',
   ],
   did_you_know: ['id', 'title', 'content', 'isAgeRestricted', 'live', 'lang'],
-  help_center: ['id', 'title', 'caption', 'contactOne', 'contactTwo', 'address', 'website', 'lang'],
-  help_center_attribute: ['id', 'name', 'emoji', 'isActive', 'lang'],
+  // Remove these two lines:
+  // help_center: ['id', 'title', 'caption', 'contactOne', 'contactTwo', 'address', 'website', 'lang'],
+  // help_center_attribute: ['id', 'name', 'emoji', 'isActive', 'lang'],
   avatar_messages: ['id', 'content', 'live', 'lang'],
   privacy_policy: ['json_dump', 'timestamp', 'lang'],
   terms_and_conditions: ['json_dump', 'timestamp', 'lang'],
@@ -202,26 +203,27 @@ const getDidYouKnows = (content: StaticContent) => {
   }, [])
 }
 
-const getHelpCenters = (content: StaticContent) => {
-  return content.helpCenters.map((entry) => {
-    return [
-      entry.id,
-      entry.title,
-      entry.caption,
-      entry.contactOne,
-      entry?.contactTwo || '',
-      entry.address,
-      entry.website,
-      content.locale,
-    ]
-  })
-}
+// Remove these entire functions:
+// const getHelpCenters = (content: StaticContent) => {
+//   return content.helpCenters.map((entry) => {
+//     return [
+//       entry.id,
+//       entry.title,
+//       entry.caption,
+//       entry.contactOne,
+//       entry?.contactTwo || '',
+//       entry.address,
+//       entry.website,
+//       content.locale,
+//     ]
+//   })
+// }
 
-const getHelpCenterAttributes = (content: StaticContent) => {
-  return content.helpCenterAttributes.map((entry) => {
-    return [entry.id, entry.name, entry.emoji, entry.isActive, content.locale]
-  })
-}
+// const getHelpCenterAttributes = (content: StaticContent) => {
+//   return content.helpCenterAttributes.map((entry) => {
+//     return [entry.id, entry.name, entry.emoji, entry.isActive, content.locale]
+//   })
+// }
 
 const getAvatarMessages = (content: StaticContent) => {
   return content.avatarMessages.map((entry) => {
@@ -274,8 +276,7 @@ locales.forEach((locale) => {
     video: getVideos(contentData),
     quiz: getQuiz(contentData),
     did_you_know: getDidYouKnows(contentData),
-    help_center: getHelpCenters(contentData),
-    help_center_attribute: getHelpCenterAttributes(contentData),
+    // Remove this line: help_center: getHelpCenters(contentData),
     avatar_messages: getAvatarMessages(contentData),
     privacy_policy: getPrivacyPolicy(contentData),
     terms_and_conditions: getTermsAndConditions(contentData),
