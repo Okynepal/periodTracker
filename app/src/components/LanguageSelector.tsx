@@ -9,6 +9,12 @@ import { setLocale } from '../redux/actions'
 import { WheelPickerOption } from './WheelPicker'
 import { analytics } from '../services/firebase'
 
+// Language display names mapping
+const languageNames: Record<string, string> = {
+  en: 'English',
+  ne: 'Nepali',
+}
+
 export const LanguageSelector = (props: ButtonProps) => {
   const locale = useSelector(currentLocaleSelector)
   const dispatch = useDispatch()
@@ -30,7 +36,7 @@ export const LanguageSelector = (props: ButtonProps) => {
   const options = React.useMemo(
     () =>
       availableAppLocales.map((item) => ({
-        label: item,
+        label: languageNames[item] || item,
         value: item,
       })),
     [availableAppLocales],
@@ -41,7 +47,7 @@ export const LanguageSelector = (props: ButtonProps) => {
   const LanguageButton = ({ onPress }: ButtonProps) => {
     return (
       <Button {...props} onPress={onPress}>
-        {locale}
+        {languageNames[locale] || locale}
       </Button>
     )
   }

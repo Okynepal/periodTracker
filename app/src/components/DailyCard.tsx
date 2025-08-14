@@ -35,13 +35,12 @@ interface DailyCardProps {
   disabled?: boolean
 }
 
-// TODO: Move
-const IconSizeForTheme: Record<ThemeName, number> = {
+const IconSizeForTheme = {
+  city: 60,
   hills: 80,
-  mosaic: 60,
+  stupa: 60,
   village: 80,
-  desert: 60,
-}
+};
 
 export const DailyCard = ({ dataEntry, disabled }: DailyCardProps) => {
   const { setLoading } = useLoading()

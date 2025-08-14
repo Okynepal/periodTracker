@@ -8,43 +8,55 @@ import { Circle } from '../../components/icons/Circle'
 import { Appearance } from '../../components/IconButton'
 import { SvgIconProps } from '../../components/icons/types'
 
-export type ThemeName = 'hills' | 'mosaic' | 'village' | 'desert'
+export type ThemeName = 'city' | 'hills' | 'stupa' | 'village'
 
-export type AvatarName = 'panda' | 'unicorn'
+export type AvatarName = 'nima' | 'suman' | 'kumari' | 'sanam'
 
-export const defaultAvatar: AvatarName = 'panda'
-export const avatarNames: AvatarName[] = ['panda', 'unicorn']
+export const defaultAvatar: AvatarName = 'nima'
+export const avatarNames: AvatarName[] = ['nima', 'suman', 'kumari', 'sanam']
 
 export const defaultTheme: ThemeName = 'hills'
-export const themeNames: ThemeName[] = ['hills', 'village', 'mosaic', 'desert']
+export const themeNames: ThemeName[] = ['city', 'hills', 'stupa', 'village']
 
 export const themeTranslations: Record<Locale, Record<AvatarName | ThemeName, string>> = {
   en: {
-    panda: 'panda',
-    unicorn: 'unicorn',
-    hills: 'hills',
-    mosaic: 'mosaic',
-    village: 'village',
-    desert: 'desert',
+    nima: 'Nima',
+    suman: 'Suman',
+    kumari: 'Kumari',
+    sanam: 'Sanam',
+    city: 'City',
+    hills: 'Hills',
+    stupa: 'Stupa',
+    village: 'Village',
+  },
+  ne: {
+    nima: 'निमा',
+    suman: 'सुमन',
+    kumari: 'कुमारी',
+    sanam: 'सनम',
+    city: 'शहर',
+    hills: 'पहाडहरू',
+    stupa: 'स्तूप',
+    village: 'गाउँ',
   },
 }
 
 export const IconForTheme: Record<ThemeName, Record<Appearance, React.FC<SvgIconProps>>> = {
+  city: {
+    fill: Star,
+    outline: StarOutline,
+  },
   hills: {
     fill: Cloud,
     outline: CloudOutline,
   },
-  mosaic: {
-    fill: Star,
-    outline: StarOutline,
+  stupa: {
+    fill: Circle,
+    outline: CircleOutline,
   },
   village: {
     fill: Cloud,
     outline: CloudOutline,
-  },
-  desert: {
-    fill: Circle,
-    outline: CircleOutline,
   },
 }
 
@@ -52,4 +64,4 @@ export const IconForTheme: Record<ThemeName, Record<Appearance, React.FC<SvgIcon
   Instead of having Icon buttons (eg clouds) the main screen wheel can be a continuous ring,
   Themes included in this list will use this ring style
 */
-export const wheelRingThemes: ThemeName[] = ['desert']
+export const wheelRingThemes: ThemeName[] = []

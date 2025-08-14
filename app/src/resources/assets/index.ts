@@ -2,39 +2,51 @@ import { AppAssets } from '../../core/types'
 
 export const assets: AppAssets = {
   avatars: {
-    panda: {
-      default: require('./images/static/panda.png'),
-      stationary_colour: require('./images/static/panda.png'),
-      bubbles: require('./images/static/panda.png'),
-      theme: require('./images/static/panda.png'),
+    nima: {
+      default: require('./images/static/Nima.png'),
+      stationary_colour: require('./images/static/Nima.png'),
+      bubbles: require('./images/static/Nima.png'),
+      theme: require('./images/static/Nima.png'),
     },
-    unicorn: {
-      default: require('./images/static/unicorn.png'),
-      stationary_colour: require('./images/static/unicorn.png'),
-      bubbles: require('./images/static/unicorn.png'),
-      theme: require('./images/static/unicorn.png'),
+    suman: {
+      default: require('./images/static/Suman.png'),
+      stationary_colour: require('./images/static/Suman.png'),
+      bubbles: require('./images/static/Suman.png'),
+      theme: require('./images/static/Suman.png'),
+    },
+    kumari: {
+      default: require('./images/static/Kumari.png'),
+      stationary_colour: require('./images/static/Kumari.png'),
+      bubbles: require('./images/static/Kumari.png'),
+      theme: require('./images/static/Kumari.png'),
+    },
+    sanam: {
+      default: require('./images/static/Sanam.png'),
+      stationary_colour: require('./images/static/Sanam.png'),
+      bubbles: require('./images/static/Sanam.png'),
+      theme: require('./images/static/Sanam.png'),
     },
   },
   backgrounds: {
-    desert: {
-      onPeriod: require('./images/backgrounds/desert-p.png'),
-      default: require('./images/backgrounds/desert-default.png'),
-      icon: require('./images/static/themes/icn_theme_4.png'),
+    city: {
+      onPeriod: require('./images/backgrounds/city-p.png'),
+      default: require('./images/backgrounds/city-default.png'),
+      icon: require('./images/static/themes/icn_theme_city.png'),
     },
     hills: {
       onPeriod: require('./images/backgrounds/hills-p.png'),
       default: require('./images/backgrounds/hills-default.png'),
-      icon: require('./images/static/themes/icn_theme_1.png'),
+      icon: require('./images/static/themes/icn_theme_hills.png'),
     },
-    mosaic: {
-      onPeriod: require('./images/backgrounds/mosaic-p.png'),
-      default: require('./images/backgrounds/mosaic-default.png'),
-      icon: require('./images/static/themes/icn_theme_3.png'),
+    stupa: {
+      onPeriod: require('./images/backgrounds/stupa-p.png'),
+      default: require('./images/backgrounds/stupa-default.png'),
+      icon: require('./images/static/themes/icn_theme_stupa.png'),
     },
     village: {
       onPeriod: require('./images/backgrounds/village-p.png'),
       default: require('./images/backgrounds/village-default.png'),
-      icon: require('./images/static/themes/icn_theme_2.png'),
+      icon: require('./images/static/themes/icn_theme_village.png'),
     },
   },
   static: {
@@ -49,8 +61,10 @@ export const assets: AppAssets = {
   },
   lottie: {
     avatars: {
-      panda: require('./lottie/avatar.json'),
-      unicorn: require('./lottie/avatar.json'),
+      nima: require('./lottie/avatar.json'),
+      suman: require('./lottie/avatar.json'),
+      kumari: require('./lottie/avatar.json'),
+      sanam: require('./lottie/avatar.json'),
     },
   },
 }

@@ -66,12 +66,12 @@ export const DateBadge = ({ date, style }: { date: Moment; style: StyleProp<View
   )
 }
 
-const IconSizeForTheme: Record<ThemeName, number> = {
+const IconSizeForTheme = {
+  city: 60,
   hills: 80,
-  mosaic: 60,
+  stupa: 60,
   village: 80,
-  desert: 60,
-}
+};
 
 const styles = StyleSheet.create({
   container: {

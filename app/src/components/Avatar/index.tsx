@@ -140,7 +140,8 @@ export const Avatar = ({ style }: { style?: StyleProp<ViewStyle> }) => {
   }))
 
   const source = assets.lottie.avatars[avatar]
-  const lottieAspectRatio = source.w / source.h
+  // Fix: Safely access width and height with fallback values
+  const lottieAspectRatio = (source?.w || 1080) / (source?.h || 2160)
   const lottieWidth = diameter * 0.33 - 12
   const lottieHeight = lottieWidth / lottieAspectRatio
 
