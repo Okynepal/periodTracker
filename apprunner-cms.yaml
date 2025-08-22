@@ -1,0 +1,56 @@
+version: 1.0
+runtime: docker
+build:
+  commands:
+    build:
+      - echo Build started on `date`
+      - echo Build completed on `date`
+run:
+  runtime-version: latest
+  command: npm start
+  network:
+    port: 5000
+    env: CMS_PORT
+  env:
+    - name: NODE_ENV
+      value: production
+    - name: DATABASE_TYPE
+      value: postgres
+    - name: DATABASE_HOST
+      value: periodtracker-cluster.cluster-cduga8c80pbs.ap-south-1.rds.amazonaws.com
+    - name: DATABASE_PORT
+      value: "5432"
+    - name: DATABASE_NAME
+      value: periodtracker
+    - name: DATABASE_USERNAME
+      value: periodtracker
+    - name: DATABASE_PASSWORD
+      value: periodtracker
+    - name: DATABASE_SCHEMA
+      value: periodtracker
+    - name: DATABASE_SYNCHRONIZE
+      value: "false"
+    - name: DATABASE_LOGGING
+      value: "false"
+    - name: PASSPORT_SECRET
+      value: "!ExolutusMe!"
+    - name: JWT_SECRET
+      value: "your-jwt-secret-key"
+    - name: API_URL
+      value: "https://niinwqw3up.ap-south-1.awsapprunner.com"
+    - name: DEFAULT_LOCALE
+      value: "en"
+    - name: STORAGE_BUCKET
+      value: ""
+    - name: STORAGE_BASE_URL
+      value: ""
+    # Remove these lines:
+    # - name: "DATABASE_SSL"
+    #   value: "true"
+    # - name: "CMS_PORT"
+    #   value: "5000"
+source:
+  image_repository:
+    image_identifier: 422348802991.dkr.ecr.ap-south-1.amazonaws.com/periodtracker/cms:latest
+    image_configuration:
+      port: 5000

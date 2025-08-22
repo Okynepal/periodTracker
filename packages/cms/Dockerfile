@@ -19,4 +19,10 @@ COPY --from=oky/base /usr/src/app/node_modules ./node_modules
 COPY --from=oky/base /usr/src/app/packages/cms/package.json .
 COPY --from=oky/base /usr/src/app/packages/cms/dist ./dist
 
+# Add these missing lines to include the @oky/core package
+COPY --from=oky/base /usr/src/app/packages/core/package.json ./packages/core/package.json
+COPY --from=oky/base /usr/src/app/packages/core/dist ./packages/core/dist
+# Add the source translations directory
+COPY --from=oky/base /usr/src/app/packages/core/src ./packages/core/src
+
 CMD [ "yarn", "serve" ]

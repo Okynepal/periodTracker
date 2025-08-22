@@ -1,0 +1,3 @@
+{
+  "AccessRoleArn": "arn:aws:iam::422348802991:role/AppRunnerECRAccessRole"
+}

@@ -1,0 +1,28 @@
+version: 1.0
+runtime: docker
+build:
+  commands:
+    build:
+      - echo "Building API container"
+      - docker build -f packages/api/Dockerfile -t periodtracker-api .
+run:
+  runtime-version: latest
+  command: yarn start
+  network:
+    port: 3000
+    env: PORT
+  env:
+    - name: NODE_ENV
+      value: production
+    - name: DATABASE_HOST
+      value: periodtracker-instance.cduga8c80pbs.ap-south-1.rds.amazonaws.com
+    - name: DATABASE_PORT
+      value: "5432"
+    - name: DATABASE_NAME
+      value: periodtracker
+    - name: DATABASE_USER
+      value: periodtracker
+    - name: DATABASE_PASSWORD
+      value: periodtracker
+    - name: DATABASE_SSL
+      value: "true"

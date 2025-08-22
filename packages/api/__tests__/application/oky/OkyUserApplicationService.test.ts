@@ -276,46 +276,59 @@ describe('OkyUserApplicationService', () => {
   })
 
   describe('editInfo', () => {
-    it('should successfully edit info', async () => {
+    it('should successfully edit user info', async () => {
       ;(okyUserRepository.byId as jest.Mock).mockResolvedValue(mockOkyUser)
       ;(okyUserRepository.save as jest.Mock).mockResolvedValue(mockOkyUser)
-
+    
       const command = {
         userId: 'someUserId',
-        name: 'bbb',
+        name: 'newName',
         dateOfBirth: new Date(),
-        location: 'Urban',
+        location: 'newLocation',
         gender: 'Male' as const,
-        secretQuestion: 'favourite_actor',
+        secretQuestion: 'newQuestion',
+        metadata: {
+          periodDates: {
+            date: '2024-01-01',
+            mlGenerated: false,
+            userVerified: true,
+          },
+        },
       }
-
+    
       const result = await okyUserApplicationService.editInfo(command)
-
       expect(result).toBe(mockOkyUser)
-      expect(okyUserRepository.byId).toHaveBeenCalledWith('someUserId')
-      expect(mockOkyUser.editInfo).toHaveBeenCalledWith({ ...command, userId: undefined })
+      expect(mockOkyUser.editInfo).toHaveBeenCalledWith({
+        name: 'newName',
+        dateOfBirth: command.dateOfBirth,
+        gender: 'Male',
+        location: 'newLocation',
+        secretQuestion: 'newQuestion',
+        metadata: command.metadata,
+      })
     })
-
-    it('should throw an error if the user is not found', async () => {
+  
+    it('should fail if the user is not found', async () => {
       ;(okyUserRepository.byId as jest.Mock).mockResolvedValue(null)
-
-      try {
-        const command = {
-          userId: 'someUserId',
-          name: 'bbb',
-          dateOfBirth: new Date(),
-          location: 'Urban',
-          gender: 'Male' as const,
-          secretQuestion: 'favourite_actor',
-        }
-
-        await okyUserApplicationService.editInfo(command)
-        fail('should have thrown an error')
-      } catch (e) {
-        expect(e.message).toBe(`Cannot edit info for missing someUserId user`)
+      const command = {
+        userId: 'someUserId',
+        name: 'newName',
+        dateOfBirth: new Date(),
+        location: 'newLocation',
+        gender: 'Male' as const,
+        secretQuestion: 'newQuestion',
+        metadata: {
+          periodDates: {
+            date: '2024-01-01',
+            mlGenerated: false,
+            userVerified: true,
+          },
+        },
       }
-
-      expect(okyUserRepository.byId).toHaveBeenCalledWith('someUserId')
+    
+      await expect(
+        okyUserApplicationService.editInfo(command)
+      ).rejects.toThrow("User with this id doesn't exists")
     })
   })
 

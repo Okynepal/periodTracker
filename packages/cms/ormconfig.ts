@@ -9,8 +9,9 @@ const ormconfig: ConnectionOptions = {
   password: env.db.password,
   database: env.db.database,
   synchronize: env.db.synchronize,
-  schema: env.db.schema,
+  schema: env.db.schema || 'periodtracker',
   logging: env.db.logging,
+  ssl: false, // Disable SSL completely for AWS internal network
   entities: [__dirname + '/src/entity/**/*{.ts,.js}'],
   subscribers: [__dirname + '/src/subscriber/**/*{.ts,.js}'],
   migrations: [__dirname + '/src/migrations/**/*{.ts,.js}'],

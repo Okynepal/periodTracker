@@ -28,6 +28,7 @@ export const env = {
     schema: process.env.DATABASE_SCHEMA,
     synchronize: toBool(process.env.DATABASE_SYNCHRONIZE),
     logging: toBool(process.env.DATABASE_LOGGING),
+    ssl: toBool(process.env.DATABASE_SSL),
   },
   api: {
     port: normalizePort(process.env.CMS_PORT) || 5000,

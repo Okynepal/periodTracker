@@ -1,0 +1,25 @@
+{
+  "ImageRepository": {
+    "ImageIdentifier": "422348802991.dkr.ecr.ap-south-1.amazonaws.com/periodtracker/api:latest",
+    "ImageRepositoryType": "ECR",
+    "ImageConfiguration": {
+      "Port": "3000",
+      "RuntimeEnvironmentVariables": {
+        "NODE_ENV": "production",
+        "DATABASE_HOST": "periodtracker-instance.cduga8c80pbs.ap-south-1.rds.amazonaws.com",
+        "DATABASE_PORT": "5432",
+        "DATABASE_USERNAME": "periodtracker",
+        "DATABASE_PASSWORD": "periodtracker",
+        "DATABASE_NAME": "periodtracker",
+        "DATABASE_SCHEMA": "periodtracker",
+        "DATABASE_TYPE": "postgres",
+        "DATABASE_SYNCHRONIZE": "false",
+        "DATABASE_LOGGING": "false",
+        "API_PORT": "3000",
+        "APPLICATION_SECRET": "!Exolutus-Me!",
+        "SECONDARY_APPLICATION_SECRET": "new-secret"
+      }
+    }
+  },
+  "AutoDeploymentsEnabled": false
+}
