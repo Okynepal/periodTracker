@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     zIndex: 9999,
     position: 'absolute',
     bottom: 12,
-    right: 12,
+    left: 50,
     justifyContent: 'center',
     alignItems: 'center',
   },

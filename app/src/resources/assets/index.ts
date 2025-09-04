@@ -61,10 +61,10 @@ export const assets: AppAssets = {
   },
   lottie: {
     avatars: {
-      nima: require('./lottie/avatar.json'),
-      suman: require('./lottie/avatar.json'),
-      kumari: require('./lottie/avatar.json'),
-      sanam: require('./lottie/avatar.json'),
+      nima: require('./lottie/Nima.json'),
+      suman: require('./lottie/Suman.json'),
+      kumari: require('./lottie/Kumari.json'),
+      sanam: require('./lottie/Haku_Patashi.json'),
     },
   },
 }
