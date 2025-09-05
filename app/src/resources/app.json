@@ -2,7 +2,7 @@
   "expo": {
     "name": "Periodtracker",
     "slug": "periodtracker",
-    "version": "2.0.0",
+    "version": "3.0.2",
     "orientation": "default",
     "icon": "./src/resources/assets/app/icon.png",
     "splash": {
@@ -13,7 +13,7 @@
     "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.oky.nepal",
-      "buildNumber": "1",
+      "buildNumber": "3",
       "supportsTablet": true,
       "googleServicesFile": "./src/resources/GoogleService-Info.plist",
       "deploymentTarget": "12.0",
@@ -27,16 +27,18 @@
     "android": {
       "package": "com.oky.nepal",
       "googleServicesFile": "./src/resources/google-services.json",
-      "versionCode": 4,
+      "versionCode": 6,
       "supportsTablet": true,
-      "permissions": ["INTERNET"]
+      "permissions": ["INTERNET"],
+      "compileSdkVersion": 36,
+      "targetSdkVersion": 36
     },
     "web": {
       "favicon": "./src/resources/assets/app/favicon.png"
     },
     "extra": {
       "eas": {
-        "projectId": ""
+        "projectId": "127071a0-8561-4528-90e0-ff9782587903"
       }
     },
     "plugins": [
@@ -47,6 +49,8 @@
             "useLegacyPackaging": true,
             "enableShrinkResourcesInReleaseBuilds": true,
             "enableProguardInReleaseBuilds": true,
+            "compileSdkVersion": 36,
+            "targetSdkVersion": 36,
             "manifest": {
               "application": {
                 "meta-data": [
