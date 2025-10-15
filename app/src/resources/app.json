@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Periodtracker",
+    "name": "Oky Nepal",
     "slug": "periodtracker",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "orientation": "default",
     "icon": "./src/resources/assets/app/icon.png",
     "splash": {
@@ -27,7 +27,7 @@
     "android": {
       "package": "com.oky.nepal",
       "googleServicesFile": "./src/resources/google-services.json",
-      "versionCode": 6,
+      "versionCode": 7,
       "supportsTablet": true,
       "permissions": ["INTERNET"],
       "compileSdkVersion": 36,
